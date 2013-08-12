@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Códigos de Desconto - MarsAirs</title>
+</head>
+<body>
+<script language="javascript" type="text/javascript">
+
+function gerar_parte_caracteres_codigo(tamanho) {
+	
+	var caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXTZ";
+	
+	var gerar_parte_caracteres_codigo = "";
+	for(var i=0; i<tamanho; i++) {
+		var valor_aleatorio = Math.floor(Math.random() * caracteres.length);
+		gerar_parte_caracteres_codigo += caracteres.substring(valor_aleatorio, valor_aleatorio + 1);
+	}
+	
+	return gerar_parte_caracteres_codigo;
+}
+
+function gerar_parte_numerica_codigo(inferior,superior){ 
+   	numPossibilidades = superior - inferior ;
+   	aleat = Math.random() * numPossibilidades ;
+   	aleat = Math.floor(aleat) ;
+   	return parseInt(inferior) + aleat ;
+} 
+
+
+
+function gerar_digito_verificacao(desconto, aleatorio_um, aleatorio_dois){
+
+	var digito = desconto + aleatorio_um + aleatorio_dois;
+
+	if (digito > 10){
+		
+		digito = digito % 10;
+		
+}
+			return digito;
+
+
+}
+
+for (var i=0;i<30;i++){
+
+
+var digito_desconto = gerar_parte_numerica_codigo(1,9);
+var digito_aleatorio_um= gerar_parte_numerica_codigo(0,9);
+var digito_aleatorio_dois = gerar_parte_numerica_codigo(0,9);
+var digito_verificacao = gerar_digito_verificacao(digito_desconto,digito_aleatorio_um,digito_aleatorio_dois);
+
+var codigo = gerar_parte_caracteres_codigo(2)  +  digito_desconto + "-" +gerar_parte_caracteres_codigo(3) + "-" + digito_aleatorio_um + digito_aleatorio_dois + digito_verificacao + "<br>";
+
+
+document.write(codigo);
+
+
+}
+
+</script>
+</body>
+</html>
