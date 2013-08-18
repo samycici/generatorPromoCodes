@@ -31,7 +31,7 @@ function gerar_digito_verificacao(desconto, aleatorio_um, aleatorio_dois){
 
 	var digito = desconto + aleatorio_um + aleatorio_dois;
 
-	if (digito > 10){
+	if (digito >= 10){
 		
 		digito = digito % 10;
 		
